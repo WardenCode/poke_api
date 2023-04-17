@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pokemon Searcher</title>
+    </head>
+    <body>
+
+        <button>Reload DB</button>
+
+        <form action="">
+            <input type="text" placeholder="Busca a un pokemon por su nombre">
+            <button type="submit">Search</button>
+        </form>
+
+        {% for pokemon in pokemons %}
+        <div>
+            <figure>
+                <img src="{{pokemon['sprite']}}" height="200px" width="200px">
+            </figure>
+            <p>Name: {{ pokemon['name'] }}</p>
+            <p>Pokedex ID: {{ pokemon['order'] }}</p>
+            <p>Base Experience: {{ pokemon['base_experience'] }}</p>
+            <p>Height: {{ pokemon['height'] }}</p>
+            <p>Weight: {{ pokemon['weight'] }}</p>
+
+            <h2>Stats:</h2>
+            {% for key, v in pokemon['stat'].items() %}
+            <p>{{ key }}: {{ v }}</p>
+            {% endfor %}
+
+            <h2>Tipos:</h2>
+            {% for type in pokemon['types'] %}
+            <p>{{ type['name'] }}</p>
+            {% endfor %}
+
+            <h2>Habilidades:</h2>
+            {% for ability in pokemon['abilities'] %}
+            <p>{{ ability['name']}}</p>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </body>
+</html>
